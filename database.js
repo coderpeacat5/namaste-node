@@ -21,14 +21,23 @@ async function main() {
         "phoneNumber": "9999999999"
     }
 
-    const insertResult = await collection.insertMany([data]);
+    const insertResult = await collection.insertOne(data);
     console.log('Inserted documents =>', insertResult);
+
+    // const updateResult = await collection.updateOne({"firstname": "Mona"}, { $set: { "firstname": "Monu" } });
+    // console.log('Updated documents =>', updateResult);
+
+    // const deleteResult = await collection.deleteMany({"firstname": "Monu"});
+    // console.log('Deleted documents =>', deleteResult);  
 
     const findResult = await collection.find({}).toArray();
     console.log('Found documents =>', findResult);
 
     const countResult = await collection.countDocuments({});
     console.log("Count of documents in the User collection =>", countResult);
+
+    const result = await collection.find({"firstname" : "Gayatri"}).toArray();
+    console.log("result : ",result)
 
     return "done."
 }
