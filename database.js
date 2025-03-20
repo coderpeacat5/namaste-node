@@ -1,11 +1,11 @@
-const {MongoClient} = require("mongodb")
+const { MongoClient } = require("mongodb")
 
-const url = 
-"mongodb+srv://namastedev:D8CHG1wF6BaR1RFR@namastenode.mg2rr.mongodb.net/"
+const url =
+    "mongodb+srv://namastedev:D8CHG1wF6BaR1RFR@namastenode.mg2rr.mongodb.net/"
 
-const client = new MongoClient(url) ; 
+const client = new MongoClient(url);
 
-const dbName ="HelloWorld" ;
+const dbName = "HelloWorld";
 
 async function main() {
     await client.connect();
@@ -15,10 +15,10 @@ async function main() {
     const collection = db.collection("User")
 
     const data = {
-        "firstname" : "Mona",
-        "lastname" : "Singh",
-        "city" : "Mumbai",
-        "phoneNumber" : "9999999999" 
+        "firstname": "Mona",
+        "lastname": "Singh",
+        "city": "Mumbai",
+        "phoneNumber": "9999999999"
     }
 
     const insertResult = await collection.insertMany([data]);
@@ -33,7 +33,7 @@ async function main() {
     return "done."
 }
 
-main() 
-.then(console.log)
-.catch(console.error)
-.finally(() => client.close());
+main()
+    .then(console.log)
+    .catch(console.error)
+    .finally(() => client.close());
